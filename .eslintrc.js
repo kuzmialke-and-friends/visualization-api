@@ -1,7 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.json',
+    ecmaVersikon: '2018',
   },
   settings: {
     'import/resolver': {
@@ -17,9 +17,7 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
-    // The prettier overrides should always be last.
     'prettier',
-    'prettier/@typescript-eslint',
   ],
   env: {
     node: true,
