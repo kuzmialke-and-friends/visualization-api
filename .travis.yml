@@ -18,5 +18,5 @@ stages:
     - script: npm run lint
     env: 
     - JOB_NAME=linters
-    - stage: deploy
-    script: npm run deploy
+    # - stage: deploy
+    # script: npm run deploy
