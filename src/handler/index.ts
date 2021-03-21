@@ -1,0 +1,1 @@
+export { serverlessApp } from './serverlessHttp';
