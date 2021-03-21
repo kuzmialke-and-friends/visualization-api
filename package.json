@@ -15,8 +15,11 @@
     "start:prod": "npm run build && npm run prod",
     "typecheck": "tsc --noEmit",
     "lint-staged": "lint-staged",
+    "lint": "eslint --cache --ext .ts --quiet src",
+    "prettier:fix": "prettier --write .",
     "serverless": "AWS_PROFILE=visualization serverless",
-    "deploy": "npm run build && npm run serverless --deploy --verbose"
+    "deploy": "npm run build && npm run serverless --deploy --verbose",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -47,12 +50,14 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "^5.1.3",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "serverless": "^2.30.3",
     "ts-jest": "^26.5.3",
