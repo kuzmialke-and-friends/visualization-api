@@ -18,7 +18,8 @@
     "lint": "eslint --cache --ext .ts --quiet src",
     "prettier:fix": "prettier --write .",
     "serverless": "AWS_PROFILE=visualization serverless",
-    "deploy": "npm run build && npm run serverless --deploy --verbose"
+    "deploy": "npm run build && npm run serverless --deploy --verbose",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
