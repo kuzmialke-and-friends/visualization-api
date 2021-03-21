@@ -2,21 +2,21 @@ group: constainer
 language: node_js
 cache:
   directories:
-    - node_modules 
+    - node_modules
 
 stages:
   - test
   - name: deploy
-  if: type = push AND branch = master
+    if: type = push AND branch = master
 
-  jobs:
+jobs:
   include:
     - stage: test
-    script: npm run test
-    env: 
-    - JOB_NAME=tests
+      script: npm run test
+      env:
+        - JOB_NAME=tests
     - script: npm run lint
-    env: 
-    - JOB_NAME=linters
-    # - stage: deploy
+      env:
+        - JOB_NAME=linters
+    - stage: deploy
     # script: npm run deploy
