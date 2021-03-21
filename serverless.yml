@@ -1,0 +1,41 @@
+frameworkVersion: '2'
+service: visualization-api
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-2
+  environment:
+    NODE_ENV: production
+  apiGateway:
+    shouldStartNameWithService: true
+
+package:
+  exclude:
+    - .*
+    - ./**/*.ts
+    - ./**/*.js.map
+    - ./**/*.spec.*
+    - ./**/*.md
+    - ./**/__mocks__/*
+    - ./**/__fixtures__/*
+    - .vscode/**/*
+    - .github/**/*
+    - .husky/*
+    - src/**/*
+    - ./tsconfig.json
+    - ./tsconfig-build.json
+    - ./jest.config.js
+    - ./package-lock.json
+
+functions:
+  datasets:
+    handler: build/handler.serverlessApp
+    memorySize: 128
+    events:
+      - http:
+          path: /{proxy+}
+          method: get
+      - http:
+          path: /
+          method: get
