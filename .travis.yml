@@ -19,4 +19,4 @@ jobs:
       env:
         - JOB_NAME=linters
     - stage: deploy
-    # script: npm run deploy
+      script: npm run deploy
