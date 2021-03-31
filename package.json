@@ -65,6 +65,7 @@
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.0.0",
+    "got": "^11.8.2",
     "koa": "^2.13.1",
     "serverless-http": "^2.7.0"
   }
