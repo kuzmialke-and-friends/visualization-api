@@ -18,5 +18,6 @@ jobs:
     - script: npm run lint
       env:
         - JOB_NAME=linters
-    - stage: deploy
-      script: npm run deploy
+    # deploy stage is disabled to avoid any cost risks
+    # - stage: deploy
+    #   script: npm run deploy
