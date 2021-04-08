@@ -5,6 +5,6 @@ module.exports = {
   collectCoverageFrom: ['!**/*.spec.ts', '!**/*.md', 'src/**/*.ts'],
   rootDir: './',
   moduleDirectories: ['node_modules', 'src'],
-  modulePathIgnorePatterns: ['/integration-tests/', '<rootDir>/build/'],
+  modulePathIgnorePatterns: ['<rootDir>/build/'],
   preset: 'ts-jest',
 };
