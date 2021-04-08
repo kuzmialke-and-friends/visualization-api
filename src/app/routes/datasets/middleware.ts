@@ -1,7 +1,8 @@
+import { Middleware } from 'koa';
 import { fetchDatasets } from 'app/fetchers';
 import { parseResponse } from 'app/utils';
 
-export const datasetsMiddleware = async (ctx, _) => {
+export const datasetsMiddleware: Middleware = async (ctx, _) => {
   if (!ctx.params.id) {
     ctx.throw(404);
     return;
