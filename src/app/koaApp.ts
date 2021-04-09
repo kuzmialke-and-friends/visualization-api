@@ -1,6 +1,6 @@
 import Koa from 'koa';
-import { router } from 'app/routes/router';
 import cors from '@koa/cors';
+import { router } from './routes/router';
 
 export const startService = () => {
   const app = new Koa();

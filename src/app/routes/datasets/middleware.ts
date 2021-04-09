@@ -1,6 +1,6 @@
 import { Middleware } from 'koa';
-import { fetchDatasets } from 'app/fetchers';
-import { parseResponse } from 'app/utils';
+import { fetchDatasets } from '../../fetchers';
+import { parseResponse } from '../../utils';
 import { limitDataset, parseLimit } from './utils';
 
 const DEFAULT_LIMIT = 2;
