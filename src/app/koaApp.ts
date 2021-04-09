@@ -1,9 +1,11 @@
 import Koa from 'koa';
 import { router } from 'app/routes/router';
+import cors from '@koa/cors';
 
 export const startService = () => {
   const app = new Koa();
 
+  app.use(cors());
   app.use(router.routes());
   app.use(router.allowedMethods());
 
