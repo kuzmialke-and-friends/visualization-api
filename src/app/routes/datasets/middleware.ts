@@ -1,6 +1,6 @@
-import { getLogger } from 'app/logger';
 import { Middleware } from 'koa';
 import { fetchSubjects } from '../../fetchers';
+import { getLogger } from '../../logger';
 import { limitSubjects, parseLimit } from './utils';
 
 const DEFAULT_LIMIT = 2;
