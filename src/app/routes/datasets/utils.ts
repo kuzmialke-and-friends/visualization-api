@@ -7,7 +7,10 @@ export const parseLimit = (limit?: string | string[]) => {
   return !Number.isNaN(parsedLimit) ? parsedLimit : undefined;
 };
 
-export const limitDataset = (dataset: Record<string, unknown>, limit: number) =>
+export const limitSubjects = (
+  dataset: Record<string, unknown>,
+  limit: number,
+) =>
   Object.entries(dataset)
     .slice(0, limit)
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});

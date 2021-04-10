@@ -1,7 +1,7 @@
 import { Middleware } from 'koa';
 import { fetchDatasets } from '../../fetchers';
 import { parseResponse } from '../../utils';
-import { limitDataset, parseLimit } from './utils';
+import { limitSubjects, parseLimit } from './utils';
 
 const DEFAULT_LIMIT = 2;
 
@@ -18,18 +18,18 @@ export const datasetsMiddleware: Middleware = async (ctx, _) => {
     return;
   }
 
-  const dataset = parseResponse(response.body);
+  const subjects = parseResponse(response.body);
 
-  if (!dataset) {
+  if (!subjects) {
     ctx.throw(404);
     return;
   }
 
   const limit = parseLimit(ctx.query.limit) || DEFAULT_LIMIT;
-  const limitedDataset = limitDataset(dataset, limit);
+  const limitedSubjects = limitSubjects(subjects, limit);
 
   ctx.body = {
-    dataset: limitedDataset,
-    supportedVisualizations: [],
+    subjects: limitedSubjects,
+    supportedVisualizations: ['graph', 'chart', 'map'],
   };
 };

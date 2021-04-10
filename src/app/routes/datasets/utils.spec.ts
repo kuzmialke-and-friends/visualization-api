@@ -1,4 +1,4 @@
-import { limitDataset, parseLimit } from './utils';
+import { limitSubjects, parseLimit } from './utils';
 
 describe('parseLimit', () => {
   it('returns undefined if type of limit is undefined', () => {
@@ -22,8 +22,8 @@ describe('parseLimit', () => {
   });
 });
 
-describe('limitDataset', () => {
-  const defaultDataset = {
+describe('limitSubjects', () => {
+  const defaultSubjects = {
     A: [],
     B: [],
     C: [],
@@ -32,31 +32,31 @@ describe('limitDataset', () => {
   };
 
   it('returns first n keys from an object', () => {
-    const dataset = { ...defaultDataset };
+    const subjects = { ...defaultSubjects };
 
     const limit = 2;
 
-    expect(limitDataset(dataset, limit)).toEqual({
+    expect(limitSubjects(subjects, limit)).toEqual({
       A: [],
       B: [],
     });
   });
 
   it('returns first n keys from an object equal to limit', () => {
-    const dataset = { ...defaultDataset };
+    const subjects = { ...defaultSubjects };
 
     const limit = 3;
 
-    expect(Object.keys(limitDataset(dataset, limit))).toHaveLength(limit);
+    expect(Object.keys(limitSubjects(subjects, limit))).toHaveLength(limit);
   });
 
   it('returns whole object if limit is bigger than keys lenght', () => {
-    const dataset = { ...defaultDataset };
+    const subjects = { ...defaultSubjects };
 
     const limit = 10;
 
-    expect(limitDataset(dataset, limit)).toEqual({
-      ...dataset,
+    expect(limitSubjects(subjects, limit)).toEqual({
+      ...subjects,
     });
   });
 });

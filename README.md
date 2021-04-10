@@ -70,8 +70,8 @@ Visualization API will output data from dataset in format:
 
 ```ts
 {
-dataset: unknown;
-supportedVisualizations: Visualization[];
+subjects: unknown;
+supportedVisualizations: VisualizationType[];
 }
 ```
 
