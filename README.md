@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kuzmialke-and-friends/visualization-api.svg?branch=main)](https://travis-ci.org/kuzmialke-and-friends/visualization-api)
 
-[Heroku preview](https://visualization-api.herokuapp.com)
+[Heroku preview](https://knf-visualization-api.herokuapp.com)
 
 ## Table of Contents
 
@@ -85,8 +85,8 @@ Query parameters:
 Examples:
 
 ```
-https://visualization-api.herokuapp.com/datasets/ghost?limit=15
-https://visualization-api.herokuapp.com/datasets/jump
+https://knf-visualization-api.herokuapp.com/datasets/ghost?limit=15
+https://knf-visualization-api.herokuapp.com/datasets/jump
 ```
 
 #### Static Maps
@@ -98,7 +98,7 @@ https://visualization-api.herokuapp.com/datasets/jump
 Examples:
 
 ```
-https://visualization-api.herokuapp.com/static-map/ghost
+https://knf-visualization-api.herokuapp.com/static-map/ghost
 ```
 
 Visualization API will output data from dataset in format:
@@ -119,7 +119,7 @@ supportedVisualizations: VisualizationType[];
 Returns 200 with `Ok` body response.
 
 ```
-https://visualization-api.herokuapp.com/health
+https://knf-visualization-api.herokuapp.com/health
 ```
 
 ## Continous Integration & Deployment
