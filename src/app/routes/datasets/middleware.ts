@@ -36,5 +36,7 @@ export const datasetsMiddleware: Middleware = async (ctx, next) => {
     supportedVisualizations: ['graph', 'chart', 'map'],
   };
 
+  LOG.info('Responding after next middleware completes.');
+
   await next();
 };
