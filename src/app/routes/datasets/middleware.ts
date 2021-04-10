@@ -7,6 +7,8 @@ const DEFAULT_LIMIT = 2;
 
 const LOG = getLogger(__filename);
 
+const isHeroku = String(process.env.HEROKU) === 'true';
+
 export const datasetsMiddleware: Middleware = async (ctx, next) => {
   if (!ctx.params.id) {
     ctx.throw(404);
@@ -28,15 +30,10 @@ export const datasetsMiddleware: Middleware = async (ctx, next) => {
 
   const limit = parseLimit(ctx.query.limit) || DEFAULT_LIMIT;
 
-  LOG.info('Limiting subjects %s.');
-  const limitedSubjects = limitSubjects(subjects, limit);
-
   ctx.body = {
-    subjects: limitedSubjects,
+    subjects: isHeroku ? subjects : limitSubjects(subjects, limit),
     supportedVisualizations: ['graph', 'chart', 'map'],
   };
-
-  LOG.info('Responding after next middleware completes.');
 
   await next();
 };

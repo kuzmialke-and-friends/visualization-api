@@ -82,6 +82,9 @@ Query parameters:
 
 - limit - default 2, limits number of subjects we sent data to
 
+**Note**: does not work on Heroku due to memory constraints, TODO: fix memory limitation on limit
+function
+
 Examples:
 
 ```
