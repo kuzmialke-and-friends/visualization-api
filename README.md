@@ -2,17 +2,32 @@
 
 [![Build Status](https://travis-ci.org/kuzmialke-and-friends/visualization-api.svg?branch=main)](https://travis-ci.org/kuzmialke-and-friends/visualization-api)
 
-[Heroku preview](https://knf-visualization-api.herokuapp.com)
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Getting started](#getting-started)
 - [Core Concepts](#core-concepts)
+- [Getting started](#getting-started)
 - [API](#api)
 - [Continous Integration & Deployment](#continous-integration-&-deployment)
 - [Datasets](#datasets)
+
   - [BIRAFFE2](#biraffe2)
+
+  ## Core Concepts
+
+Visualization API purpose is to fetch datasets and prepare them for visualization using frontend
+React + D3.js app.
+
+It is a [koa](https://koajs.com/) app that is meant to be run as
+[lambda](https://aws.amazon.com/lambda/) fetching from [S3](https://aws.amazon.com/s3/) in
+production environment using [serverless](https://www.serverless.com/) and
+[serverless-http](https://github.com/dougmoscrop/serverless-http), however other than testing
+purposes it is not live due to financial reasons and should be used locally together with a simple
+JSON serving server like
+[visualization-data](https://github.com/kuzmialke-and-friends/visualization-data).
+
+It is also hosted in Heroku for convenience sake
+[Heroku preview](https://knf-visualization-api.herokuapp.com).
 
 ## Getting started
 
@@ -33,14 +48,14 @@ npm i
 ### Start development server
 
 ```bash
-DATA_BACKEND=${YOUR_DATA_BACKEND_URL} npm run start:dev
+DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe npm run start:dev
 ```
 
 ### Build and run production
 
 ```bash
 npm run build
-DATA_BACKEND=${YOUR_DATA_BACKEND_URL} npm start
+DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe npm start
 ```
 
 ### Run test
@@ -52,19 +67,6 @@ npm test
 ### Visualization API will be running on:
 
 http://localhost:3000/
-
-## Core Concepts
-
-Visualization API purpose is to fetch datasets and prepare them for visualization using frontend
-React + D3.js app.
-
-It is a [koa](https://koajs.com/) app that is meant to be run as
-[lambda](https://aws.amazon.com/lambda/) fetching from [S3](https://aws.amazon.com/s3/) in
-production environment using [serverless](https://www.serverless.com/) and
-[serverless-http](https://github.com/dougmoscrop/serverless-http), however other than testing
-purposes it is not live due to financial reasons and should be used locally together with a simple
-JSON serving server like
-[visualization-data](https://github.com/kuzmialke-and-friends/visualization-data).
 
 ## API
 
@@ -108,7 +110,7 @@ Visualization API will output data from dataset in format:
 
 ```ts
 {
-subjects: unknown;
+subjects: Subjects;
 supportedVisualizations: VisualizationType[];
 }
 ```
