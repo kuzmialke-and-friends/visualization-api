@@ -23,7 +23,7 @@ production environment using [serverless](https://www.serverless.com/) and
 [serverless-http](https://github.com/dougmoscrop/serverless-http), however other than testing
 purposes it is not live due to financial reasons and should be used locally together with a simple
 JSON serving server like
-[visualization-data](https://github.com/kuzmialke-and-friends/visualization-data).
+[visualization-data-bucket](https://github.com/kuzmialke-and-friends/visualization-data-bucket).
 
 It is also hosted in Heroku for convenience sake
 [Heroku preview](https://knf-visualization-api.herokuapp.com).
