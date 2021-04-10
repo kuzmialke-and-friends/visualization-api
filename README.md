@@ -10,10 +10,9 @@
 - [API](#api)
 - [Continous Integration & Deployment](#continous-integration-&-deployment)
 - [Datasets](#datasets)
-
   - [BIRAFFE2](#biraffe2)
 
-  ## Core Concepts
+## Core Concepts
 
 Visualization API purpose is to fetch datasets and prepare them for visualization using frontend
 React + D3.js app.
