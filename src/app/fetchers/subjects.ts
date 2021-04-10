@@ -6,7 +6,7 @@ export const fetchSubjects = async (
   endpoint = process.env.DATA_BACKEND,
 ) => {
   try {
-    return await request<Subjects>(`${endpoint}/datasets/${id}.json`);
+    return await request<Subjects>(`${endpoint}/${id}.json`);
   } catch (error) {
     return null;
   }
