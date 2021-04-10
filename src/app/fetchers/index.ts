@@ -1,1 +1,2 @@
-export { fetchDatasets } from './datasets';
+export { fetchSubjects } from './subjects';
+export { fetchStaticMap } from './staticMap';

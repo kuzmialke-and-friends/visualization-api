@@ -9,8 +9,8 @@ export const startService = () => {
   app.use(router.routes());
   app.use(router.allowedMethods());
 
-  if (process.env.SERVER_PORT) {
-    app.listen(process.env.SERVER_PORT);
+  if (process.env.PORT) {
+    app.listen(process.env.PORT);
   }
 
   return app;

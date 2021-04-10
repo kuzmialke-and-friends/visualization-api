@@ -6,6 +6,8 @@ cache:
 
 stages:
   - test
+  - name: build
+  if: type = push AND branch = master
   # - name: deploy
   #   if: type = push AND branch = master
 
@@ -18,5 +20,9 @@ jobs:
     - script: npm run lint
       env:
         - JOB_NAME=linters
+    - stage: build
+      script: npm run build
+      env:
+        - JOB_NAME=build
     # - stage: deploy
     #   script: npm run deploy

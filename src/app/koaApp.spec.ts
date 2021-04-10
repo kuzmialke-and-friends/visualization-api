@@ -3,27 +3,27 @@ import { startService } from './koaApp';
 jest.mock('koa');
 
 const setServerPortEnv = (port: string) => {
-  const originalServerPort = process.env.SERVER_PORT;
+  const originalServerPort = process.env.PORT;
 
-  process.env.SERVER_PORT = port;
+  process.env.PORT = port;
 
   return () => {
-    process.env.SERVER_PORT = originalServerPort;
+    process.env.PORT = originalServerPort;
   };
 };
 
 const deleteServerPortEnv = () => {
-  const originalServerPort = process.env.SERVER_PORT;
+  const originalServerPort = process.env.PORT;
 
-  delete process.env.SERVER_PORT;
+  delete process.env.PORT;
 
   return () => {
-    process.env.SERVER_PORT = originalServerPort;
+    process.env.PORT = originalServerPort;
   };
 };
 
 describe('Koa app', () => {
-  it('should set the port if SERVER_PORT is set', () => {
+  it('should set the port if PORT is set', () => {
     const port = '5000';
     const cleanup = setServerPortEnv(port);
     const app = startService();
@@ -32,7 +32,7 @@ describe('Koa app', () => {
     cleanup();
   });
 
-  it('should not set the port if SERVER_PORT is not set', () => {
+  it('should not set the port if PORT is not set', () => {
     const cleanup = deleteServerPortEnv();
     const app = startService();
     expect(app.listen).not.toHaveBeenCalled();

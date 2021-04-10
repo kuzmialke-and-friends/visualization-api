@@ -1,5 +1,9 @@
 # Visualization API
 
+[![Build Status](https://travis-ci.org/kuzmialke-and-friends/visualization-api.svg?branch=main)](https://travis-ci.org/kuzmialke-and-friends/visualization-api)
+
+[Heroku preview](https://visualization-api.herokuapp.com)
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -66,6 +70,37 @@ JSON serving server like
 
 _TODO:_ implement API specs
 
+### Endpoints:
+
+#### Datasets
+
+```
+`/datasets/:id
+```
+
+Query parameters:
+
+- limit - default 2, limits number of subjects we sent data to
+
+Examples:
+
+```
+https://visualization-api.herokuapp.com/datasets/ghost?limit=15
+https://visualization-api.herokuapp.com/datasets/jump
+```
+
+#### Static Maps
+
+```
+/static-map/:id
+```
+
+Examples:
+
+```
+https://visualization-api.herokuapp.com/static-map/ghostStaticMap
+```
+
 Visualization API will output data from dataset in format:
 
 ```ts
@@ -75,9 +110,24 @@ supportedVisualizations: VisualizationType[];
 }
 ```
 
+#### Health
+
+```
+`/health
+```
+
+Returns 200 with `Ok` body response.
+
+```
+https://visualization-api.herokuapp.com/health
+```
+
 ## Continous Integration & Deployment
 
-This repository uses Travis for testing each change done to codebase automatically and as early as
+Code is written and meant to be run as Lambda, however it is currently deployed to Heroku using
+their Free Dynos.
+
+This app uses Travis for testing each change done to codebase automatically and as early as
 possible. Continuous Deployment follows the testing that happens during CI and pushes changes to
 production system.
 
@@ -87,6 +137,10 @@ Stages:
 
 - run tests
 - run linting
+
+### Build
+
+- builts app
 
 ### Deploy
 

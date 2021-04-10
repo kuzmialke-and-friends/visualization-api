@@ -1,0 +1,1 @@
+export { staticMapMiddleware } from './middleware';

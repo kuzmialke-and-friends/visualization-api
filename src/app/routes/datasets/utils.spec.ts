@@ -1,3 +1,4 @@
+import { Subjects } from 'app/types';
 import { limitSubjects, parseLimit } from './utils';
 
 describe('parseLimit', () => {
@@ -23,13 +24,13 @@ describe('parseLimit', () => {
 });
 
 describe('limitSubjects', () => {
-  const defaultSubjects = {
+  const defaultSubjects = ({
     A: [],
     B: [],
     C: [],
     D: [],
     F: [],
-  };
+  } as unknown) as Subjects;
 
   it('returns first n keys from an object', () => {
     const subjects = { ...defaultSubjects };

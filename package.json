@@ -9,7 +9,7 @@
     "build:watch": "npm run build -- --watch",
     "test": "jest --coverage",
     "test:watch": "npm run test -- --watch",
-    "start": "SERVER_PORT=3000 NODE_PATH=build node build/app",
+    "start": "NODE_PATH=build node build/app",
     "start:dev": "npm run build && nodemon --watch build --delay 1s --exec 'npm start' & npm run build:watch",
     "serverless": "serverless",
     "deploy": "npm run build && npm run serverless -- deploy --verbose",
