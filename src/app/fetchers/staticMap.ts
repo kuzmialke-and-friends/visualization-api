@@ -6,7 +6,7 @@ export const fetchStaticMap = async (
   endpoint = process.env.DATA_BACKEND,
 ) => {
   try {
-    return await request<StaticMap>(`${endpoint}/static-maps/${id}.json`);
+    return await request<StaticMap>(`${endpoint}/${id}StaticMap.json`);
   } catch (error) {
     return null;
   }

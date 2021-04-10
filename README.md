@@ -75,7 +75,7 @@ _TODO:_ implement API specs
 #### Datasets
 
 ```
-`/datasets/:id
+/datasets/:id
 ```
 
 Query parameters:
@@ -98,7 +98,7 @@ https://visualization-api.herokuapp.com/datasets/jump
 Examples:
 
 ```
-https://visualization-api.herokuapp.com/static-map/ghostStaticMap
+https://visualization-api.herokuapp.com/static-map/ghost
 ```
 
 Visualization API will output data from dataset in format:
@@ -113,7 +113,7 @@ supportedVisualizations: VisualizationType[];
 #### Health
 
 ```
-`/health
+/health
 ```
 
 Returns 200 with `Ok` body response.
