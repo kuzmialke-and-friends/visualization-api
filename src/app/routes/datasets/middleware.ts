@@ -7,17 +7,36 @@ const DEFAULT_LIMIT = 2;
 
 const LOG = getLogger(__filename);
 
-const isHeroku = String(process.env.HEROKU) === 'true';
+const defaultConfig = {
+  ghost: ['chart', 'map'],
+  jump: ['chart', 'map'],
+  maze: [],
+};
+
+type DatasetType = keyof typeof defaultConfig;
+
+const isDatasetConfigured = (
+  datasetId?: unknown,
+  config = defaultConfig,
+): datasetId is DatasetType => Object.keys(config).includes(String(datasetId));
+
+const getSupportedVisualizations = (
+  datasetId: DatasetType,
+  config = defaultConfig,
+) => config[datasetId];
 
 export const datasetsMiddleware: Middleware = async (ctx, next) => {
-  if (!ctx.params.id) {
+  const { id = '' } = ctx.params;
+  if (!id) {
     ctx.throw(404);
     return;
   }
 
-  LOG.info('Fetching subjects for %s.', ctx.params.id);
+  ctx.assert(isDatasetConfigured(id), 404, 'Dataset not found %s', id);
 
-  const response = await fetchSubjects(ctx.params.id);
+  LOG.info('Fetching subjects for %s.', id);
+
+  const response = await fetchSubjects(id);
 
   if (response?.statusCode !== 200 || !response.body) {
     ctx.throw(404);
@@ -31,8 +50,8 @@ export const datasetsMiddleware: Middleware = async (ctx, next) => {
   const limit = parseLimit(ctx.query.limit) || DEFAULT_LIMIT;
 
   ctx.body = {
-    subjects: isHeroku ? subjects : limitSubjects(subjects, limit),
-    supportedVisualizations: ['graph', 'chart', 'map'],
+    subjects: limitSubjects(subjects, limit),
+    supportedVisualizations: getSupportedVisualizations(id),
   };
 
   await next();

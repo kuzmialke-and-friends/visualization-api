@@ -54,7 +54,7 @@ DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe 
 
 ```bash
 npm run build
-DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe npm start
+PORT=3000 DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe npm start
 ```
 
 ### Run test

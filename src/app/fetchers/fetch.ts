@@ -1,6 +1,6 @@
-import got from 'got/dist/source';
+import got, { OptionsOfJSONResponseBody } from 'got/dist/source';
 
-export const requestOptions = {
+export const requestOptions: OptionsOfJSONResponseBody = {
   responseType: 'json',
   timeout: undefined,
 };
