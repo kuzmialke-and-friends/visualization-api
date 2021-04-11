@@ -1,4 +1,6 @@
-import got, { OptionsOfJSONResponseBody } from 'got/dist/source';
+import got, { OptionsOfJSONResponseBody } from 'got';
+
+export { Response } from 'got';
 
 export const requestOptions: OptionsOfJSONResponseBody = {
   responseType: 'json',

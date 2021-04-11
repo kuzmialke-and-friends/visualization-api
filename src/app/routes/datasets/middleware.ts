@@ -1,3 +1,4 @@
+import { FetchedSubjects } from 'app/fetchers/subjects';
 import { Middleware } from 'koa';
 import { fetchSubjects } from '../../fetchers';
 import { getLogger } from '../../logger';
@@ -20,6 +21,9 @@ const isDatasetConfigured = (
   config = defaultConfig,
 ): datasetId is DatasetType => Object.keys(config).includes(String(datasetId));
 
+const isFetched = (response: FetchedSubjects): boolean =>
+  Boolean(response.statusCode === 200 && response.body);
+
 const getSupportedVisualizations = (
   datasetId: DatasetType,
   config = defaultConfig,
@@ -27,19 +31,16 @@ const getSupportedVisualizations = (
 
 export const datasetsMiddleware: Middleware = async (ctx, next) => {
   const { id = '' } = ctx.params;
-  if (!id) {
-    ctx.throw(404);
-    return;
-  }
 
-  ctx.assert(isDatasetConfigured(id), 404, 'Dataset not found %s', id);
+  ctx.assert(Boolean(id), 404, 'No dataset id provided.');
+  ctx.assert(isDatasetConfigured(id), 404, 'Dataset not found.');
 
   LOG.info('Fetching subjects for %s.', id);
 
   const response = await fetchSubjects(id);
 
-  if (response?.statusCode !== 200 || !response.body) {
-    ctx.throw(404);
+  if (!response || !isFetched(response)) {
+    ctx.throw(404, 'Failed to fetch.');
     return;
   }
 
