@@ -47,7 +47,7 @@ npm i
 ### Start development server
 
 ```bash
-DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe npm run start:dev
+PORT=3000 DATA_BACKEND=https://knf-visualization-data-bucket.herokuapp.com/assets/biraffe npm run start:dev
 ```
 
 ### Build and run production
